@@ -48,6 +48,7 @@ task :track_tweets => :environment do
   end
 
   client.on_reconnect do |timeout, retries|
+    # todo handle missing tweets when disconnected
     puts "tracker: on_reconnect #{timeout} retries #{retries}"
   end
 
