@@ -32,10 +32,13 @@ handler do |job|
         })
       end
     rescue Twitter::NotFound        
+      # todo push delete notification
       t.destroy
     rescue Twitter::BadRequest
       # rate limit :(  
       # puts "updater: rate limit exceeded"
+    rescue Twitter::ServiceUnavailable
+      # big whale :F
     end
     
   end
