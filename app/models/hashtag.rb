@@ -5,6 +5,10 @@ class Hashtag < ActiveRecord::Base
   
   before_destroy :destroy_tweets
   
+  def proposals 
+    self.tweets.order("retweet_count DESC") 
+  end
+  
   private 
   
   def destroy_tweets

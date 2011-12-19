@@ -2,13 +2,47 @@
 <html>
 <head>
   <title>Proposals</title>
+  <%= stylesheet_link_tag    "http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css" %>
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= yield %>
+	<div class="topbar">
+		<div class="fill">
+			<div class="container">
+				<a class="brand" href="#">Proposals</a>
+				<ul class="nav">
+					<li><%= link_to "Home", hashtags_url %></li>
+					<li><%= link_to "New Hashtag", new_hashtag_url %></li>
+				</ul>
+				<!--
+				<form action="" class="pull-right">
+					<input class="input-small" type="text" placeholder="Username">
+					<input class="input-small" type="password" placeholder="Password">
+					<button class="btn" type="submit">Sign in</button>
+				</form>
+				-->
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+
+		<div class="content">
+			
+			<%= yield %>
+			
+		</div>
+
+		<footer>
+			<p>&copy; Occupy SLX 2011</p>
+		</footer>
+
+	</div> <!-- /container -->
+	
+
 
 </body>
 </html>

@@ -1,14 +1,25 @@
-<h1>Hashtags#show</h1>
 
-<h2><%= @hashtag.tag %></h2>
-<ul>
-	<% @hashtag.tweets.each do |tweet| %>
-	<li>
-		<p><%= tweet.text %></p>
-		<dl>
-			<dt><%= tweet.username %></dt>
-			<dd><%= tweet.retweet_count %></dd>
-		</dl>
-	</li>
-	<% end %>
-</ul>
+	<div class="page-header">
+		<h1>Hashtags <small>Show</small></h1>
+	</div>
+	<div class="row">
+		<div class="span10">
+			<h2><%= @hashtag.tag %></h2>
+
+				<% @hashtag.proposals.each do |tweet| %>
+				<blockquote>
+					<p><%= tweet.text %></p>
+					<small>
+						<b><%= tweet.username %></b>
+						<i><%= t('endorsed',:count => tweet.retweet_count) %></i>
+					</small>
+				</blockquote>
+				<% end %>
+
+		</div>
+		<div class="span4">
+			<h3>Latest Proposals</h3>
+			<%= render "shared/latest_proposals" %>
+		</div>
+	</div>
+

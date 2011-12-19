@@ -1,0 +1,9 @@
+<% Tweet.order("created_at DESC").limit(5).each do |t| %>
+  <blockquote>
+		<p><%= t.text %></p>
+		<small>
+			<b><%= t.username %></b>
+			<i><%= t.retweet_count %></i>
+		</small>
+	</blockquote>
+<% end %>
