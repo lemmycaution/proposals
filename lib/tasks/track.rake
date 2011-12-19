@@ -22,6 +22,17 @@ task :track_tweets => :environment do
         t = Tweet.find_or_create_by_id_str(status.id_str)
         t.update_attributes({:text => status.text, :username => status.user.name, :retweet_count => status.retweet_count}) unless status.text.starts_with? "RT "
         t.hashtags << h
+        if t.new_record?
+          deferrable = Pusher['tracker'].trigger_async('new_tweet', {
+            :tweet => t.to_json
+          })
+          deferrable.callback {
+            # Do something on success
+          }
+          deferrable.errback { |error|
+            # error is a instance of Pusher::Error
+          }
+        end
       end
     end
   end

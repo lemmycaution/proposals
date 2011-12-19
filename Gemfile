@@ -12,6 +12,8 @@ gem 'heroku'
 gem 'twitter'
 gem 'clockwork'
 gem 'kaminari'
+gem 'pusher'
+gem 'em-http-request'
 
 
 # Gems used only for assets and not required
