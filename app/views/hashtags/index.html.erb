@@ -1,2 +1,12 @@
 <h1>Hashtags#index</h1>
-<p>Find me in app/views/hashtags/index.html.erb</p>
+
+<%= link_to "new hastag", new_hashtag_url %>
+<%=tracker_restart_url(:only_path => false)%>
+<ul>
+	<% @hashtags.each do |hashtag| %>
+	<li>
+		<%= link_to hashtag.tag, hashtag_url(hashtag)%>
+		<small><%= link_to "delete", hashtag_url(hashtag,:format => :json), :method=>:delete, :remote => true, :class => "hashtag_delete"%></small>
+	</li>
+	<% end %>
+</ul>

@@ -1,5 +1,5 @@
 Proposals::Application.routes.draw do
-  get "hashtags/index"
+  resources :hashtags
 
   get "tracker/restart"
 

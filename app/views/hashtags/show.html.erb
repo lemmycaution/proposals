@@ -1,0 +1,14 @@
+<h1>Hashtags#show</h1>
+
+<h2><%= @hashtag.tag %></h2>
+<ul>
+	<% @hashtag.tweets.each do |tweet| %>
+	<li>
+		<p><%= tweet.text %></p>
+		<dl>
+			<dt><%= tweet.username %></dt>
+			<dd><%= tweet.retweet_count %></dd>
+		</dl>
+	</li>
+	<% end %>
+</ul>
