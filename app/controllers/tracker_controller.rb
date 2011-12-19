@@ -11,7 +11,7 @@ class TrackerController < ApplicationController
       response = HTTParty.post(uri,options)
     else
       # Thread.new { system('bundle exec rvmsudo restart proposal-worker-1') }
-      response = {"OK"} 
+      response = {:status => "OK"} 
     end
     
     respond_with response
