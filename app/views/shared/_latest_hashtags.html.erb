@@ -1,0 +1,8 @@
+<div class="span4">
+	<h3>Latest Hashtags</h3>
+	<div id="latest_hashtags">		
+		<% Hashtag.order("created_at DESC").limit(5).each do |h| %>
+			<span class="label notice"><%= link_to h.tag,hashtag_url(h) %></span>
+		<% end %>
+	</div>
+</div>

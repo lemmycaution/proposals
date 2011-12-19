@@ -10,7 +10,7 @@ task :track_tweets => :environment do
     config.oauth_token = ENV['OAUTH_TOKEN_TRACKER']
     config.oauth_token_secret = ENV['OAUTH_TOKEN_SECRET_TRACKER']
     config.auth_method = :oauth
-    config.parser   = :json_gem
+    config.parser   = :yajl
   end    
 
   client = TweetStream::Client.new    
@@ -19,19 +19,15 @@ task :track_tweets => :environment do
   client.on_timeline_status do |status|
     @hashtags.each do |h|
       if status.entities.hashtags.map{|ht| ht['text']}.index(h.tag)
-        t = Tweet.find_or_create_by_id_str(status.id_str)
-        t.update_attributes({:text => status.text, :username => status.user.name, :retweet_count => status.retweet_count}) unless status.text.starts_with? "RT "
-        t.hashtags << h
-        if t.new_record?
-          deferrable = Pusher['tracker'].trigger_async('new_tweet', {
-            :tweet => t.to_json
-          })
-          deferrable.callback {
-            # Do something on success
-          }
-          deferrable.errback { |error|
-            # error is a instance of Pusher::Error
-          }
+        unless status.text.starts_with? "RT " && status.retweeted
+          t = Tweet.find_or_create_by_id_str(status.id_str)
+          t.update_attributes({:text => status.text, :username => status.user.name, :retweet_count => status.retweet_count})
+          t.hashtags << h
+          if t.new_record?
+            Pusher['tracker'].trigger_async('new_tweet', {
+              :tweet => t
+            })
+          end
         end
       end
     end

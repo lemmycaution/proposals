@@ -14,6 +14,7 @@ gem 'clockwork'
 gem 'kaminari'
 gem 'pusher'
 gem 'em-http-request'
+gem 'yajl-ruby'
 
 
 # Gems used only for assets and not required

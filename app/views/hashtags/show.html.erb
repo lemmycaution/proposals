@@ -1,27 +1,28 @@
+<div class="page-header">
+	<h1>Hashtags <small>Show</small></h1>
+</div>
+<div class="row">
+	<div class="span10">
+		
+		<h2><%= @hashtag.tag %></h2>
 
-	<div class="page-header">
-		<h1>Hashtags <small>Show</small></h1>
+		<% @proposals.each do |tweet| %>
+		<blockquote id="<%=tweet.id%>">
+			<p><%= tweet.text %></p>
+			<small>
+				<b><%= tweet.username %></b>
+				<i><%= t('endorsed',:count => tweet.retweet_count) %></i>
+			</small>
+		</blockquote>
+		<% end %>
+
+		<%= paginate @proposals %>
+
 	</div>
-	<div class="row">
-		<div class="span10">
-			<h2><%= @hashtag.tag %></h2>
+<%= render "shared/latest_hashtags" %>	
+</div>
 
-				<% @proposals.each do |tweet| %>
-				<blockquote>
-					<p><%= tweet.text %></p>
-					<small>
-						<b><%= tweet.username %></b>
-						<i><%= t('endorsed',:count => tweet.retweet_count) %></i>
-					</small>
-				</blockquote>
-				<% end %>
-				
-				<%= paginate @proposals %>
 
-		</div>
-		<div class="span4">
-			<h3>Latest Proposals</h3>
-			<%= render "shared/latest_proposals" %>
-		</div>
-	</div>
+
+
 

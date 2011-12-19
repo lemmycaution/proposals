@@ -25,7 +25,12 @@ handler do |job|
   Tweet.all.each do |t|
     begin
       rc = Twitter.status(t.id_str).retweet_count
-      t.update_attribute(:retweet_count, rc) if rc != t.retweet_count
+      if rc != t.retweet_count
+        t.update_attribute(:retweet_count, rc) 
+        Pusher['updater'].trigger('update_tweet', {
+          :tweet => t
+        })
+      end
     rescue Twitter::NotFound        
       t.destroy
     rescue Twitter::BadRequest

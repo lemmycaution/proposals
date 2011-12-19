@@ -3,23 +3,24 @@
 </div>
 <div class="row">
 	<div class="span10">
+		
 		<h2>Latest Hashtags</h2>
 
-			<% @hashtags.each do |hashtag| %>
-				<div class="well">
-				<h3>
+		<% @hashtags.each do |hashtag| %>
+		<div class="hashtag well">
+			<h3>
 				<%= link_to hashtag.tag, hashtag_url(hashtag)%>
-				<%= link_to "delete", hashtag_url(hashtag,:format => :json), :method=>:delete, :remote => true, :class => "hashtag_delete btn danger small"%>
-				</h3>
-				</div>
-			<% end %>
-			
-			<%= paginate @hashtags %>
+				<%= link_to "delete", hashtag_url(hashtag,:format => :json), :method=>:delete, :remote => true, :class => "delete btn danger small"%>
+			</h3>
+		</div>
+		<% end %>
+
+		<%= paginate @hashtags %>
 
 	</div>
-	<div class="span4">
-		<h3>Latest Proposals</h3>
-		<%= render "shared/latest_proposals" %>
-	</div>
+<%= render "shared/latest_proposals" %>
+
+
 </div>
+
 

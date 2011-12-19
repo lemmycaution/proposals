@@ -1,9 +1,14 @@
-<% Tweet.order("created_at DESC").limit(5).each do |t| %>
-  <blockquote>
-		<p><%= t.text %></p>
-		<small>
-			<b><%= t.username %></b>
-			<i><%= t.retweet_count %></i>
-		</small>
-	</blockquote>
-<% end %>
+<div class="span4">
+	<h3>Latest Proposals</h3>
+	<div id="latest_proposals">		
+		<% Tweet.order("created_at DESC").limit(5).each do |t| %>
+		  <blockquote>
+				<p><%= t.text %></p>
+				<small>
+					<b><%= t.username %></b>
+					<i><%= t.retweet_count %></i>
+				</small>
+			</blockquote>
+		<% end %>
+	</div>
+</div>
