@@ -5,16 +5,18 @@
 	<div class="span10">
 		
 		<h2><%= @hashtag.tag %></h2>
-
-		<% @proposals.each do |tweet| %>
-		<blockquote id="<%=tweet.id%>">
-			<p><%= tweet.text %></p>
-			<small>
-				<b><%= tweet.username %></b>
-				<i><%= t('endorsed',:count => tweet.retweet_count) %></i>
-			</small>
-		</blockquote>
-		<% end %>
+		
+		<div id="latest_proposals">
+			<% @proposals.each do |tweet| %>
+			<blockquote id="<%=tweet.id%>">
+				<p><%= tweet.text %></p>
+				<small>
+					<b><%= tweet.username %></b>
+					<i><%= t('endorsed',:count => tweet.retweet_count) %></i>
+				</small>
+			</blockquote>
+			<% end %>
+		</div>
 
 		<%= paginate @proposals %>
 
