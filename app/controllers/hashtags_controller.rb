@@ -19,13 +19,13 @@ class HashtagsController < ApplicationController
   
   def create
     @hashtag = Hashtag.create(params[:hashtag])
-    tracker_restart
+    puts tracker_restart
     respond_with @hashtag, :location => hashtag_url(@hashtag)
   end
   
   def destroy
     @hashtag = Hashtag.find(params[:id]).destroy
-    tracker_restart
+    puts tracker_restart
     respond_with @hashtag, :location => hashtags_url
   end  
 
