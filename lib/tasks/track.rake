@@ -19,7 +19,7 @@ task :track_tweets => :environment do
   client.on_timeline_status do |status|
     @hashtags.each do |h|
       if status.entities.hashtags.map{|ht| ht['text']}.index(h.tag)
-        unless status.text.starts_with? "RT " && status.retweeted
+        unless status.text.starts_with? "RT " || status.retweeted
           t = Tweet.find_or_create_by_id_str(status.id_str)
           t.update_attributes({:text => status.text, :username => status.user.name, :retweet_count => status.retweet_count})
           t.hashtags << h
