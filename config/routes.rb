@@ -1,4 +1,8 @@
 Proposals::Application.routes.draw do
+  get "hashtags/index"
+
+  get "tracker/restart"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

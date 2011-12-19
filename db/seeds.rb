@@ -5,3 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+Hashtag.create({:tag => "occupy"})
+Hashtag.create({:tag => "night"})
+Hashtag.create({:tag => "day"})
+Hashtag.create({:tag => "test"})
