@@ -8,7 +8,7 @@ gem 'rails', '3.1.3'
 gem 'thin'
 gem 'json'
 gem 'tweetstream'
-gem 'httparty'
+gem 'heroku'
 gem 'twitter'
 gem 'clockwork'
 
