@@ -6,7 +6,7 @@
 		<div class="span10">
 			<h2><%= @hashtag.tag %></h2>
 
-				<% @hashtag.proposals.each do |tweet| %>
+				<% @proposals.each do |tweet| %>
 				<blockquote>
 					<p><%= tweet.text %></p>
 					<small>
@@ -15,6 +15,8 @@
 					</small>
 				</blockquote>
 				<% end %>
+				
+				<%= paginate @proposals %>
 
 		</div>
 		<div class="span4">

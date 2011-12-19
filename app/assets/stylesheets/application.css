@@ -56,9 +56,7 @@ body {
   border: 0;
 }
 
-.well{
-	margin-right:20px;
-}
+
 .hashtag_delete{
 	float:right;
 }
@@ -67,6 +65,7 @@ blockquote small i{
 	float:right;
 }
 
-.span10 blockquote{
-	margin-right:20px;
+.span10{
+width:560px;
+margin-right:20px;
 }

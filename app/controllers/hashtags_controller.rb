@@ -3,12 +3,13 @@ class HashtagsController < ApplicationController
   respond_to :html, :json, :xml
   
   def index
-    @hashtags = Hashtag.order("created_at DESC").all
+    @hashtags = Hashtag.order("created_at DESC").page params[:page]
     respond_with @hashtags    
   end
   
   def show
     @hashtag = Hashtag.find(params[:id])
+    @proposals = @hashtag.proposals.page params[:page]
     respond_with @hashtag
   end
   
@@ -18,9 +19,13 @@ class HashtagsController < ApplicationController
   end
   
   def create
-    @hashtag = Hashtag.create(params[:hashtag])
+    @hashtag = Hashtag.new(params[:hashtag])
     @is_tracker_restarted = tracker_restart
-    respond_with @hashtag, :location => hashtag_url(@hashtag)
+    if @hashtag.save
+      respond_with @hashtag, :location => hashtag_url(@hashtag)
+    else
+      respond_with @hashtag, :location => new_hashtag_url(@hashtag)
+    end  
   end
   
   def destroy

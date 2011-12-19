@@ -11,6 +11,7 @@ gem 'tweetstream'
 gem 'heroku'
 gem 'twitter'
 gem 'clockwork'
+gem 'kaminari'
 
 
 # Gems used only for assets and not required
