@@ -25,7 +25,11 @@ $(document).ready(function(){
 		var tmp = _.template($("#proposal_tmp").html());
 		var t = $(tmp(data.tweet));
 
+		t.addClass('fresh');
 		$("#latest_proposals").prepend(t);
+		setTimeout(function(){
+		$("blockquote#"+data.tweet.id).removeClass('fresh');
+		},5000);
 	});
 	
 	var channel2 = pusher.subscribe('updater');
@@ -40,7 +44,7 @@ $(document).ready(function(){
 		$("blockquote#"+data.tweet.id).addClass('fresh');
 		setTimeout(function(){
 		$("blockquote#"+data.tweet.id).removeClass('fresh');
-		},2000);
+		},5000);
 	});
 
 

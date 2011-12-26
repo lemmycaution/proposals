@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111219040423) do
+ActiveRecord::Schema.define(:version => 20111226131440) do
 
   create_table "hashtags", :force => true do |t|
     t.string   "tag"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(:version => 20111219040423) do
     t.integer  "retweet_count", :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "tweeted_at"
   end
 
   add_index "tweets", ["id_str"], :name => "index_tweets_on_id_str", :unique => true

@@ -29,7 +29,7 @@ class HashtagsController < ApplicationController
   end
   
   def destroy
-    @hashtag = Hashtag.find(params[:id]).destroy
+    @hashtag = Hashtag.destroy(params[:id])
     @is_tracker_restarted = tracker_restart
     respond_with @hashtag, :location => hashtags_url
   end  

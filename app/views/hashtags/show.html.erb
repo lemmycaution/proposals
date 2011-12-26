@@ -11,7 +11,7 @@
 			<blockquote id="<%=tweet.id%>">
 				<p><%= tweet.text %></p>
 				<small>
-					<b><%= tweet.username %></b>
+					<b><%= tweet.username %> / <%= tweet.tweeted_at %></b>
 					<i><%= t('endorsed',:count => tweet.retweet_count) %></i>
 				</small>
 			</blockquote>

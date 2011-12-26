@@ -9,11 +9,17 @@ class Hashtag < ActiveRecord::Base
     self.tweets.order("retweet_count DESC") 
   end
   
-  private 
+   
   
   def destroy_tweets
+
+    ids = []
     self.tweets.each do |t|
-      t.destroy if t.hashtags.count == 1
+      tags = t.hashtags.map{|h| h.tag}
+      tags.delete(self.tag)
+      ids << t.id if Hashtag.where(:tag => tags ).empty?
+      t.destroy
     end
+    Tweet.delete(ids)
   end
 end

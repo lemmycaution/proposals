@@ -25,7 +25,7 @@ task :track_tweets => :environment do
             push = true
             t.save
           end
-          t.update_attributes({:text => status.text, :username => status.user.name, :retweet_count => status.retweet_count})
+          t.update_attributes({:text => status.text, :username => status.user.name, :retweet_count => status.retweet_count, :tweeted_at => status.created_at})
           t.hashtags << h
           if push
             Pusher['tracker'].trigger_async('new_tweet', {
