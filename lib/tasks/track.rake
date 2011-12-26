@@ -5,10 +5,10 @@ task :track_tweets => :environment do
   @hashtags = Hashtag.select([:id,:tag]).all
 
   TweetStream.configure do |config|
-    config.consumer_key = ENV['CONSUMER_KEY_TRACKER']
-    config.consumer_secret = ENV['CONSUMER_SECRET_TRACKER']
-    config.oauth_token = ENV['OAUTH_TOKEN_TRACKER']
-    config.oauth_token_secret = ENV['OAUTH_TOKEN_SECRET_TRACKER']
+    config.consumer_key = ENV['CONSUMER_KEY']
+    config.consumer_secret = ENV['CONSUMER_SECRET']
+    config.oauth_token = ENV['OAUTH_TOKEN']
+    config.oauth_token_secret = ENV['OAUTH_TOKEN_SECRET']
     config.auth_method = :oauth
     config.parser   = :yajl
   end    
